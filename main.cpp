@@ -6,6 +6,8 @@
 
 #include <bits/stdc++.h>
 
+#include "ADT.h"
+
 #define INF (int)10e6
 #define eps 10e-6
 #define mp make_pair
@@ -28,6 +30,19 @@ int main(int argc, char** argv) {
     cin.tie(NULL);
     //    freopen("input.in","r",stdin);
     //    freopen("output.out","w",stdout);
+    
+    ADT llist;
+    llist.pushFront(3);
+    llist.pushFront(2);
+    llist.pushFront(1);
+    llist.pushBack(4);
+    llist.pushBack(5);
+    llist.pushBack(6);
+    llist.print(); 
+    
+    llist.popFront();
+    llist.popBack();
+    llist.print();
 
     return 0;
 }
