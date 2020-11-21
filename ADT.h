@@ -51,6 +51,9 @@ public:
     bool isEmpty();
 
     void print();
+    
+    void reverseList();
+    
 
 };
 
