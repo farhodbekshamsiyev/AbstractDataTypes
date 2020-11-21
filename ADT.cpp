@@ -19,7 +19,6 @@ ADT::ADT() {
     tail = nullptr;
 }
 
-
 ADT::~ADT() {
     Node *tmp = nullptr;
     while(head) {
@@ -37,6 +36,7 @@ void ADT::pushFront(int data) {
         head = tail = node;
     } else {
         node->next = head;
+        head->prev = node;
         head = node;
     }
 }
@@ -44,7 +44,7 @@ void ADT::pushFront(int data) {
 void ADT::pushBack(int data) {
     Node *node = new Node(data);
     if(tail == nullptr) {
-        tail = node;
+        head = tail = node;
     } else {
         node->prev = tail;
         tail->next = node;
@@ -77,3 +77,41 @@ void ADT::print() {
     cout << endl;
 }
 
+void ADT::topFront() {
+    cout << head->value <<" at the beginning of the list\n";
+}
+
+void ADT::topBack() {
+    cout << tail->value <<" at the end of the list\n";
+}
+
+bool ADT::find(int data) {
+    Node *tmp = head;
+    while(tmp != nullptr) {
+        if(tmp->value == data) {
+            return true;
+        }
+        tmp = tmp->next;
+    }
+    return false;
+}
+
+bool ADT::isEmpty() {
+    if (head == nullptr && tail == nullptr) 
+        return 0;
+    return 1;
+}
+
+void ADT::reverseList() {
+    
+    Node *prev = NULL, *current = NULL, *next = NULL;
+    current = head;
+    while(current != NULL){
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    // now let the head point at the last node (prev)
+    head = prev;
+}
